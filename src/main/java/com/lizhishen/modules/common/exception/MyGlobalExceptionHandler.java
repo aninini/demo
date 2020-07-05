@@ -14,7 +14,7 @@ import javax.validation.ConstraintViolationException;
 import javax.validation.ValidationException;
 
 /**
- *  <p> 全局异常处理器 </p>
+ * <p> 全局异常处理器 </p>
  *
  * @description: 在spring 3.2中，新增了@ControllerAdvice 注解，可以用于定义@ExceptionHandler、@InitBinder、@ModelAttribute，并应用到所有@RequestMapping中
  * @author: zhengqing
@@ -32,10 +32,10 @@ public class MyGlobalExceptionHandler {
     @ExceptionHandler(value = MyException.class)
     public ApiResult myException(MyException be) {
         log.error("自定义异常：", be);
-        if(be.getCode() != null){
+        if (be.getCode() != null) {
             return ApiResult.fail(be.getCode(), be.getMessage());
         }
-        return ApiResult.fail( be.getMessage() );
+        return ApiResult.fail(be.getMessage());
     }
 
     // 参数校验异常处理 ===========================================================================
@@ -45,9 +45,9 @@ public class MyGlobalExceptionHandler {
      * 方法参数校验
      */
     @ExceptionHandler(MethodArgumentNotValidException.class)
-    public ApiResult handleMethodArgumentNotValidException( MethodArgumentNotValidException e ) {
-        log.error( "方法参数校验:" + e.getMessage(), e );
-        return ApiResult.fail( e.getBindingResult().getFieldError().getDefaultMessage() );
+    public ApiResult handleMethodArgumentNotValidException(MethodArgumentNotValidException e) {
+        log.error("方法参数校验:" + e.getMessage(), e);
+        return ApiResult.fail(e.getBindingResult().getFieldError().getDefaultMessage());
     }
 
     /**
@@ -55,8 +55,8 @@ public class MyGlobalExceptionHandler {
      */
     @ExceptionHandler(ValidationException.class)
     public ApiResult handleValidationException(ValidationException e) {
-        log.error( "ValidationException:", e );
-        return ApiResult.fail( e.getCause().getMessage() );
+        log.error("ValidationException:", e);
+        return ApiResult.fail(e.getCause().getMessage());
     }
 
     /**
@@ -64,21 +64,19 @@ public class MyGlobalExceptionHandler {
      */
     @ExceptionHandler(ConstraintViolationException.class)
     public ApiResult handleConstraintViolationException(ConstraintViolationException e) {
-        log.error( "ValidationException:" + e.getMessage(), e );
-        return ApiResult.fail( e.getMessage() );
+        log.error("ValidationException:" + e.getMessage(), e);
+        return ApiResult.fail(e.getMessage());
     }
 
     @ExceptionHandler(NoHandlerFoundException.class)
     public ApiResult handlerNoFoundException(Exception e) {
-        return ApiResult.fail( 404, "路径不存在，请检查路径是否正确" );
+        return ApiResult.fail(404, "路径不存在，请检查路径是否正确");
     }
 
     @ExceptionHandler(DuplicateKeyException.class)
     public ApiResult handleDuplicateKeyException(DuplicateKeyException e) {
-        return ApiResult.fail( "数据重复，请检查后提交" );
+        return ApiResult.fail("数据重复，请检查后提交");
     }
-
-
 
 
     //    ===============================================
@@ -122,7 +120,7 @@ public class MyGlobalExceptionHandler {
     @ExceptionHandler({Exception.class})
     public ApiResult exception(Exception ex) {
         log.error("其他错误:", ex);
-        return ApiResult.fail( 500, "其他错误："+ ex );
+        return ApiResult.fail(500, "其他错误：" + ex);
     }
 
 }

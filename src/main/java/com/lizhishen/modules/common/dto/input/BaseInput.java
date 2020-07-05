@@ -4,7 +4,7 @@ import io.swagger.annotations.ApiModel;
 import lombok.Data;
 
 /**
- *  <p> 应用基础传入参数 </p>
+ * <p> 应用基础传入参数 </p>
  *
  * @description:
  * @author: zhengqing

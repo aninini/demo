@@ -15,8 +15,6 @@ import java.util.List;
 /**
  * <p> 系统管理-菜单表  服务实现类 </p>
  *
- * @author: zhengqing
- * @date: 2019-08-19
  */
 @Service
 @Transactional
@@ -26,7 +24,7 @@ public class MenuServiceImpl extends ServiceImpl<MenuMapper, Menu> implements IM
     MenuMapper menuMapper;
 
     @Override
-    public List <Menu> listTreeMenu() {
+    public List<Menu> listTreeMenu() {
         return menuMapper.selectList(null);
     }
 
@@ -42,7 +40,7 @@ public class MenuServiceImpl extends ServiceImpl<MenuMapper, Menu> implements IM
 
     @Override
     public Integer save(Menu para) {
-        if (para.getId()!=null) {
+        if (para.getId() != null) {
             menuMapper.updateById(para);
         } else {
             menuMapper.insert(para);

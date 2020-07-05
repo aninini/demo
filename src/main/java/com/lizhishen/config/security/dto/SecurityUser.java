@@ -17,9 +17,6 @@ import java.util.StringJoiner;
 /**
  * <p> 安全认证用户详情 </p>
  *
- * @author : zhengqing
- * @description :
- * @date : 2019/10/14 17:46
  */
 @Data
 @Slf4j
@@ -37,7 +34,8 @@ public class SecurityUser implements UserDetails {
      */
     private transient String roleCodes;
 
-    public SecurityUser() { }
+    public SecurityUser() {
+    }
 
     public SecurityUser(User user) {
         if (user != null) {
@@ -49,7 +47,7 @@ public class SecurityUser implements UserDetails {
         if (user != null) {
             this.currentUserInfo = user;
             this.roleList = roleList;
-            if (!CollectionUtils.isEmpty(roleList)){
+            if (!CollectionUtils.isEmpty(roleList)) {
                 StringJoiner roleCodes = new StringJoiner(",", "[", "]");
                 roleList.forEach(e -> roleCodes.add(e.getCode()));
                 this.roleCodes = roleCodes.toString();

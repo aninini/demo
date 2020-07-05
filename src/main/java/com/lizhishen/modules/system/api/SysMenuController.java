@@ -30,10 +30,6 @@ import java.util.stream.Collectors;
 /**
  * <p> 系统管理-菜单表  接口 </p>
  *
- * @author: zhengqing
- * @description:
- * @date: 2019-08-19
- *
  */
 @RestController
 @RequestMapping("/api/system/menu")
@@ -48,19 +44,19 @@ public class SysMenuController extends BaseController {
     public ApiResult treeMenu() {
         List<Menu> list = menuService.listTreeMenu();
         List<MenuTreeNode> menuTreeNodeList = Lists.newArrayList();
-        if( list != null && !list.isEmpty() ){
-            list.forEach( temp->{
+        if (list != null && !list.isEmpty()) {
+            list.forEach(temp -> {
                 MenuTreeNode menuTreeNode = new MenuTreeNode();
-                BeanUtil.copyProperties( temp, menuTreeNode);
-                menuTreeNodeList.add( menuTreeNode );
-            } );
+                BeanUtil.copyProperties(temp, menuTreeNode);
+                menuTreeNodeList.add(menuTreeNode);
+            });
         }
-        List<MenuTreeNode> menuTreeNodeList2 = TreeBuilder.buildMenuTree( menuTreeNodeList );
+        List<MenuTreeNode> menuTreeNodeList2 = TreeBuilder.buildMenuTree(menuTreeNodeList);
 
-        menuTreeNodeList2.stream().sorted( Comparator.comparing( MenuTreeNode::getSortNo ) ).collect( Collectors.toList());
+        menuTreeNodeList2.stream().sorted(Comparator.comparing(MenuTreeNode::getSortNo)).collect(Collectors.toList());
         JSONObject json = new JSONObject();
-        json.put( "menuList", list);
-        json.put( "menuTree", menuTreeNodeList2);
+        json.put("menuList", list);
+        json.put("menuTree", menuTreeNodeList2);
         return ApiResult.ok("获取菜单树成功", json);
     }
 
@@ -76,7 +72,7 @@ public class SysMenuController extends BaseController {
     public ApiResult delete(@RequestBody MenuQueryPara input) {
         // 如果该菜单下存在子菜单，提示先删除子菜单
         List<Menu> menuList = menuService.selectList(new EntityWrapper<Menu>().eq("parent_id", input.getId()));
-        if (!CollectionUtils.isEmpty(menuList)){
+        if (!CollectionUtils.isEmpty(menuList)) {
 //            menuList.forEach(e -> menuService.deleteById(e.getId()));
             return ApiResult.fail("该菜单下存在子菜单，请先删除子菜单！");
         }
@@ -89,7 +85,7 @@ public class SysMenuController extends BaseController {
     @PostMapping(value = "/listPage", produces = "application/json;charset=utf-8")
     @ApiOperation(value = "获取系统管理-菜单表 列表分页", httpMethod = "POST", response = ApiResult.class)
     public ApiResult listPage(@RequestBody MenuQueryPara filter) {
-        Page<Menu> page = new Page<>(filter.getPage(),filter.getLimit());
+        Page<Menu> page = new Page<>(filter.getPage(), filter.getLimit());
         menuService.listPage(page, filter);
         return ApiResult.ok("获取系统管理-菜单表 列表分页成功", page);
     }
@@ -98,7 +94,7 @@ public class SysMenuController extends BaseController {
     @ApiOperation(value = "获取系统管理-菜单表 列表", httpMethod = "POST", response = ApiResult.class)
     public ApiResult list(@RequestBody MenuQueryPara filter) {
         List<Menu> result = menuService.list(filter);
-        return ApiResult.ok("获取系统管理-菜单表 列表成功",result);
+        return ApiResult.ok("获取系统管理-菜单表 列表成功", result);
     }
 
     @PostMapping(value = "/getById", produces = "application/json;charset=utf-8")

@@ -8,13 +8,10 @@ import lombok.Data;
 /**
  * 系统管理-用户基础信息表查询参数
  *
- * @author: zhengqing
- * @description:
- * @date: 2019-08-19
  */
 @Data
 @ApiModel(description = "系统管理-用户基础信息表查询参数")
-public class UserQueryPara extends BasePageQuery{
+public class UserQueryPara extends BasePageQuery {
 
     @ApiModelProperty(value = "id")
     private Integer id;

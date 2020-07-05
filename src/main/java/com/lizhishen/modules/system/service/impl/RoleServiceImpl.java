@@ -15,8 +15,6 @@ import java.util.List;
 /**
  * <p> 系统管理-角色表  服务实现类 </p>
  *
- * @author: zhengqing
- * @date: 2019-08-20
  */
 @Service
 @Transactional
@@ -37,7 +35,7 @@ public class RoleServiceImpl extends ServiceImpl<RoleMapper, Role> implements IR
 
     @Override
     public Integer save(Role para) {
-        if (para.getId()!=null) {
+        if (para.getId() != null) {
             roleMapper.updateById(para);
         } else {
             roleMapper.insert(para);

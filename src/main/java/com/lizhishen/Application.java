@@ -12,7 +12,6 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 @EnableConfigurationProperties({MyProperties.class})
 @EnableTransactionManagement
 @SpringBootApplication
-@MapperScan("com.lizhishen.modules.system.mapper")
 public class Application {
 
     public static void main(String[] args) {

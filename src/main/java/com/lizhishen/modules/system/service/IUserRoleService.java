@@ -10,8 +10,6 @@ import java.util.List;
 /**
  * <p>  系统管理 - 用户角色关联表  服务类 </p>
  *
- * @author: zhengqing
- * @date: 2019-08-20
  */
 public interface IUserRoleService extends IService<UserRole> {
 

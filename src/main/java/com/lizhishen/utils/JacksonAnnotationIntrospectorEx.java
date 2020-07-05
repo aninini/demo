@@ -8,11 +8,8 @@ import com.fasterxml.jackson.databind.introspect.JacksonAnnotationIntrospector;
 import java.lang.annotation.Annotation;
 
 /**
- *  <p> 扩展JACKSON对FastJson注释JSONField的支持 </p>
+ * <p> 扩展JACKSON对FastJson注释JSONField的支持 </p>
  *
- * @description :
- * @author : zhengqing
- * @date : 2019/10/11 16:02
  */
 public class JacksonAnnotationIntrospectorEx extends JacksonAnnotationIntrospector {
     @Override

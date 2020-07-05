@@ -22,9 +22,6 @@ import java.util.List;
 /**
  * <p> 系统管理-用户基础信息表 接口 </p>
  *
- * @author: zhengqing
- * @description:
- * @date: 2019-08-19
  */
 @RestController
 @RequestMapping("/api/system/user")

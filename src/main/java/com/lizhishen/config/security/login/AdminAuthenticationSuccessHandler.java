@@ -14,11 +14,8 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 /**
- *  <p> 认证成功处理 </p>
+ * <p> 认证成功处理 </p>
  *
- * @description :
- * @author : zhengqing
- * @date : 2019/10/12 15:31
  */
 @Component
 public class AdminAuthenticationSuccessHandler implements AuthenticationSuccessHandler {

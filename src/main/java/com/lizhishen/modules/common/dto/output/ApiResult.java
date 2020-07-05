@@ -5,10 +5,10 @@ import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 
 /**
- *  <p> API返回参数 </p>
+ * <p> API返回参数 </p>
  *
- * @description :
  * @author : zhengqing
+ * @description :
  * @date : 2019/7/20 11:09
  */
 @ApiModel(value = "API返回参数")
@@ -91,7 +91,8 @@ public class ApiResult {
         return new ApiResult(code, message, data);
     }
 
-    public ApiResult() { }
+    public ApiResult() {
+    }
 
     public static ApiResult build(Integer code, String msg) {
         return new ApiResult(code, msg, null);

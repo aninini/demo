@@ -11,8 +11,6 @@ import java.util.List;
 /**
  * <p>  系统管理-用户基础信息表 服务类 </p>
  *
- * @author: zhengqing
- * @date: 2019-08-19
  */
 public interface IUserService extends IService<User> {
 

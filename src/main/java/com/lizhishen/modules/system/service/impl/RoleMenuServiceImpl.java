@@ -16,8 +16,6 @@ import java.util.List;
 /**
  * <p> 系统管理 - 角色-菜单关联表  服务实现类 </p>
  *
- * @author: zhengqing
- * @date: 2019-08-20
  */
 @Service
 @Transactional
@@ -40,15 +38,15 @@ public class RoleMenuServiceImpl extends ServiceImpl<RoleMenuMapper, RoleMenu> i
     public void saveRoleMenu(RoleMenuQueryPara para) {
         Integer roleId = para.getRoleId();
         String menuIds = para.getMenuIds();
-        roleMenuMapper.deleteByRoleId( roleId );
-        if(StringUtils.isNotBlank( menuIds )){
-            String[] menuIdArrays = menuIds.split( "," );
-            if(menuIdArrays.length > 0){
+        roleMenuMapper.deleteByRoleId(roleId);
+        if (StringUtils.isNotBlank(menuIds)) {
+            String[] menuIdArrays = menuIds.split(",");
+            if (menuIdArrays.length > 0) {
                 for (String menuId : menuIdArrays) {
                     RoleMenu roleMenu = new RoleMenu();
-                    roleMenu.setRoleId( roleId );
-                    roleMenu.setMenuId( Integer.parseInt( menuId ) );
-                    roleMenuMapper.insert( roleMenu );
+                    roleMenu.setRoleId(roleId);
+                    roleMenu.setMenuId(Integer.parseInt(menuId));
+                    roleMenuMapper.insert(roleMenu);
                 }
             }
         }
@@ -56,7 +54,7 @@ public class RoleMenuServiceImpl extends ServiceImpl<RoleMenuMapper, RoleMenu> i
 
     @Override
     public Integer save(RoleMenu para) {
-        if (para.getId()!=null) {
+        if (para.getId() != null) {
             roleMenuMapper.updateById(para);
         } else {
             roleMenuMapper.insert(para);

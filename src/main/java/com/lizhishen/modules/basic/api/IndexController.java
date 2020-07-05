@@ -8,10 +8,10 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 /**
- *  <p> 首页 </p>
+ * <p> 首页 </p>
  *
- * @description :
  * @author : zhengqing
+ * @description :
  * @date : 2019/8/19 13:49
  */
 @RestController

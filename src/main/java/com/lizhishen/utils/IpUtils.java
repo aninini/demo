@@ -11,9 +11,6 @@ import java.util.regex.Pattern;
 /**
  * <p> IP工具类 </p>
  *
- * @author : zhengqing
- * @description :
- * @date : 2019/9/18 10:07
  */
 public class IpUtils {
 
@@ -167,6 +164,7 @@ public class IpUtils {
 
     /**
      * 检查IP是否合法
+     *
      * @param ip
      * @return
      */
@@ -176,7 +174,7 @@ public class IpUtils {
         String regex2 = "[1-9]\\d";
         String regex3 = "\\d";
         String regex = "(" + regex0 + ")|(" + regex1 + ")|(" + regex2 + ")|(" + regex3 + ")";
-        regex = "(" + regex + ").(" + regex + ").(" + regex + ").(" + regex  + ")";
+        regex = "(" + regex + ").(" + regex + ").(" + regex + ").(" + regex + ")";
         Pattern p = Pattern.compile(regex);
         Matcher m = p.matcher(ip);
         return m.matches();
@@ -212,20 +210,21 @@ public class IpUtils {
 
     /**
      * 把ip转化为整数
+     *
      * @param ip
      * @return
      */
-    public static long translateIP2Int(String ip){
+    public static long translateIP2Int(String ip) {
         String[] intArr = ip.split("\\.");
         int[] ipInt = new int[intArr.length];
-        for (int i = 0; i <intArr.length ; i++) {
+        for (int i = 0; i < intArr.length; i++) {
             ipInt[i] = new Integer(intArr[i]).intValue();
         }
-        return ipInt[0] * 256 * 256 * 256 + + ipInt[1] * 256 * 256 + ipInt[2] * 256 + ipInt[3];
+        return ipInt[0] * 256 * 256 * 256 + +ipInt[1] * 256 * 256 + ipInt[2] * 256 + ipInt[3];
     }
 
     public static void main(String[] args) {
-        System.out.println( getLocalIP() );
+        System.out.println(getLocalIP());
     }
 
 }

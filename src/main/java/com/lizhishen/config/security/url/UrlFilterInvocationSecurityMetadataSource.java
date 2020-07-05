@@ -24,9 +24,6 @@ import java.util.List;
 /**
  * <p> 获取访问该url所需要的用户角色权限信息 </p>
  *
- * @author : zhengqing
- * @description : 执行完之后到 `UrlAccessDecisionManager` 中认证权限
- * @date : 2019/10/15 14:36
  */
 @Component
 public class UrlFilterInvocationSecurityMetadataSource implements FilterInvocationSecurityMetadataSource {
@@ -52,12 +49,12 @@ public class UrlFilterInvocationSecurityMetadataSource implements FilterInvocati
         String requestUrl = ((FilterInvocation) object).getRequestUrl();
         // TODO 忽略url请放在此处进行过滤放行
         for (String ignoreUrl : myProperties.getAuth().getIgnoreUrls()) {
-            if (ignoreUrl.equals(requestUrl)){
+            if (ignoreUrl.equals(requestUrl)) {
                 return null;
             }
         }
 
-        if (requestUrl.contains("/login") || requestUrl.contains("/groupChat")){
+        if (requestUrl.contains("/login") || requestUrl.contains("/groupChat")) {
             return null;
         }
 
@@ -68,8 +65,8 @@ public class UrlFilterInvocationSecurityMetadataSource implements FilterInvocati
             if (("/api" + permission.getUrl()).equals(requestUrl)) {
                 List<RoleMenu> permissions = roleMenuMapper.selectList(new EntityWrapper<RoleMenu>().eq("menu_id", permission.getId()));
                 List<String> roles = new LinkedList<>();
-                if (!CollectionUtils.isEmpty(permissions)){
-                    permissions.forEach( e -> {
+                if (!CollectionUtils.isEmpty(permissions)) {
+                    permissions.forEach(e -> {
                         Integer roleId = e.getRoleId();
                         Role role = roleMapper.selectById(roleId);
                         roles.add(role.getCode());

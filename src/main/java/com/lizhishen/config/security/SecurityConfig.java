@@ -25,9 +25,6 @@ import org.springframework.security.web.authentication.www.BasicAuthenticationFi
 /**
  *  <p> Security 核心配置类 </p>
  *
- * @author：  zhengqing <br/>
- * @date：  2019/9/30$ 10:58$ <br/>
- * @version：  <br/>
  */
 @Configuration
 @EnableWebSecurity
@@ -77,6 +74,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     /**
      * 权限配置
+     *
      * @param http
      * @throws Exception
      */
@@ -135,12 +133,13 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
         // 自定义过滤器在登录时认证用户名、密码
         http.addFilterAt(adminAuthenticationProcessingFilter, UsernamePasswordAuthenticationFilter.class)
-            .addFilterBefore(myAuthenticationFilter, BasicAuthenticationFilter.class);
+                .addFilterBefore(myAuthenticationFilter, BasicAuthenticationFilter.class);
     }
 
     /**
      * 忽略拦截url或静态资源文件夹 - web.ignoring(): 会直接过滤该url - 将不会经过Spring Security过滤器链
-     *                             http.permitAll(): 不会绕开springsecurity验证，相当于是允许该路径通过
+     * http.permitAll(): 不会绕开springsecurity验证，相当于是允许该路径通过
+     *
      * @param web
      * @throws Exception
      */

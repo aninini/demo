@@ -20,10 +20,6 @@ import java.util.List;
 /**
  * <p> 系统管理 - 角色-菜单关联表  接口 </p>
  *
- * @author: zhengqing
- * @description:
- * @date: 2019-08-20
- *
  */
 @RestController
 @RequestMapping("/api/system/roleMenu")
@@ -36,7 +32,7 @@ public class SysRoleMenuController extends BaseController {
     @PostMapping(value = "/listPage", produces = "application/json;charset=utf-8")
     @ApiOperation(value = "获取系统管理 - 角色-菜单关联表 列表分页", httpMethod = "POST", response = ApiResult.class)
     public ApiResult listPage(@RequestBody RoleMenuQueryPara filter) {
-        Page<RoleMenu> page = new Page<>(filter.getPage(),filter.getLimit());
+        Page<RoleMenu> page = new Page<>(filter.getPage(), filter.getLimit());
         roleMenuService.listPage(page, filter);
         return ApiResult.ok("获取系统管理 - 角色-菜单关联表 列表分页成功", page);
     }
@@ -45,7 +41,7 @@ public class SysRoleMenuController extends BaseController {
     @ApiOperation(value = "获取系统管理 - 角色-菜单关联表 列表", httpMethod = "POST", response = ApiResult.class)
     public ApiResult list(@RequestBody RoleMenuQueryPara filter) {
         List<RoleMenu> result = roleMenuService.list(filter);
-        return ApiResult.ok("获取系统管理 - 角色-菜单关联表 列表成功",result);
+        return ApiResult.ok("获取系统管理 - 角色-菜单关联表 列表成功", result);
     }
 
     @PostMapping(value = "/saveOrUpdate", produces = "application/json;charset=utf-8")
@@ -72,7 +68,7 @@ public class SysRoleMenuController extends BaseController {
     @PostMapping(value = "/saveRoleMenu", produces = "application/json;charset=utf-8")
     @ApiOperation(value = "保存角色相关联菜单", httpMethod = "POST", response = ApiResult.class)
     public ApiResult saveRoleMenu(@RequestBody RoleMenuQueryPara input) {
-        roleMenuService.saveRoleMenu( input );
+        roleMenuService.saveRoleMenu(input);
         return ApiResult.ok("保存角色相关联菜单成功");
     }
 

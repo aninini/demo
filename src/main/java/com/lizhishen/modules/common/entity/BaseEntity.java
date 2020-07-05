@@ -10,7 +10,7 @@ import lombok.Setter;
 import java.util.Date;
 
 /**
- *  <p> 修改时间 </p>
+ * <p> 修改时间 </p>
  *
  * @description:
  * @author: zhengqing

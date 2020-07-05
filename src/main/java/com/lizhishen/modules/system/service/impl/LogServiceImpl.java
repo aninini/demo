@@ -15,8 +15,6 @@ import java.util.List;
 /**
  * <p> 系统管理 - 日志表 服务实现类 </p>
  *
- * @author: zhengqing
- * @date: 2019-09-18 10:51:57
  */
 @Service
 @Transactional
@@ -28,8 +26,8 @@ public class LogServiceImpl extends ServiceImpl<LogMapper, SysLog> implements IL
     @Override
     public void listPage(Page<SysLog> page, LogQueryPara para) {
         List<SysLog> result = logMapper.selectLogs(page, para);
-        result.forEach( e->{
-            if (e.getUserId()==0){
+        result.forEach(e -> {
+            if (e.getUserId() == 0) {
                 e.setUsername("非法人员");
             }
         });
@@ -43,7 +41,7 @@ public class LogServiceImpl extends ServiceImpl<LogMapper, SysLog> implements IL
 
     @Override
     public Integer save(SysLog para) {
-        if (para.getId()!=null) {
+        if (para.getId() != null) {
             logMapper.updateById(para);
         } else {
             logMapper.insert(para);

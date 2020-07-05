@@ -18,10 +18,6 @@ import org.springframework.web.bind.annotation.RestController;
 /**
  * <p> 系统管理 - 日志表 接口 </p>
  *
- * @author: zhengqing
- * @description:
- * @date: 2019-09-18 10:51:57
- *
  */
 @RestController
 @RequestMapping("/api/system/log")
@@ -34,7 +30,7 @@ public class SysLogController extends BaseController {
     @PostMapping(value = "/listPage", produces = "application/json;charset=utf-8")
     @ApiOperation(value = "获取系统管理 - 日志表列表分页", httpMethod = "POST", response = ApiResult.class)
     public ApiResult listPage(@RequestBody LogQueryPara filter) {
-        Page<SysLog> page = new Page<>(filter.getPage(),filter.getLimit());
+        Page<SysLog> page = new Page<>(filter.getPage(), filter.getLimit());
         logService.listPage(page, filter);
         return ApiResult.ok("获取系统管理 - 日志表列表分页成功", page);
     }

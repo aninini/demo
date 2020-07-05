@@ -17,7 +17,7 @@ public class TreeBuilder {
         // 根节点
         Set<MenuVO> root = new HashSet<>();
         allNodes.forEach(node -> {
-            if (Integer.valueOf( node.getParentId() ) == 0) {
+            if (Integer.valueOf(node.getParentId()) == 0) {
                 root.add(node);
             }
         });
@@ -36,7 +36,7 @@ public class TreeBuilder {
      */
     private static MenuVO findChildren(MenuVO treeNode, Set<MenuVO> treeNodes) {
         for (MenuVO it : treeNodes) {
-            if (String.valueOf( treeNode.getId() ).equals(it.getParentId())) {
+            if (String.valueOf(treeNode.getId()).equals(it.getParentId())) {
                 treeNode.getChildren().add(findChildren(it, treeNodes));
             }
         }
@@ -47,7 +47,7 @@ public class TreeBuilder {
         // 根节点
         List<MenuTreeNode> root = Lists.newArrayList();
         allNodes.forEach(node -> {
-            if (Integer.valueOf( node.getParentId() ) == 0) {
+            if (Integer.valueOf(node.getParentId()) == 0) {
                 root.add(node);
             }
         });
@@ -56,10 +56,10 @@ public class TreeBuilder {
         });
 
         //对根节点排序
-        List<MenuTreeNode> sortedList = root.stream().sorted( Comparator.comparing( MenuTreeNode::getSortNo ) ).collect( Collectors.toList());
+        List<MenuTreeNode> sortedList = root.stream().sorted(Comparator.comparing(MenuTreeNode::getSortNo)).collect(Collectors.toList());
         //先清空，在添加
         root.clear();
-        root.addAll( sortedList );
+        root.addAll(sortedList);
         return root;
     }
 
@@ -72,15 +72,15 @@ public class TreeBuilder {
      */
     private static MenuTreeNode findMenuChildren(MenuTreeNode treeNode, List<MenuTreeNode> treeNodes) {
         for (MenuTreeNode it : treeNodes) {
-            if (String.valueOf( treeNode.getId() ).equals(it.getParentId())) {
+            if (String.valueOf(treeNode.getId()).equals(it.getParentId())) {
                 treeNode.getChildren().add(findMenuChildren(it, treeNodes));
             }
         }
         //对子节点排序
-        List<MenuTreeNode> childrenSorted = treeNode.getChildren().stream().sorted( Comparator.comparing( MenuTreeNode::getSortNo ) ).collect( Collectors.toList());
+        List<MenuTreeNode> childrenSorted = treeNode.getChildren().stream().sorted(Comparator.comparing(MenuTreeNode::getSortNo)).collect(Collectors.toList());
         //先清空，在添加
         treeNode.getChildren().clear();
-        treeNode.getChildren().addAll( childrenSorted );
+        treeNode.getChildren().addAll(childrenSorted);
         return treeNode;
     }
 

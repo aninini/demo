@@ -5,7 +5,7 @@ import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 
 /**
- *  <p> 基类查询参数 </p>
+ * <p> 基类查询参数 </p>
  *
  * @description:
  * @author: zhengqing
@@ -13,7 +13,7 @@ import lombok.Data;
  */
 @ApiModel(description = "基类查询参数")
 @Data
-public class BaseQuery extends BasePageQuery{
+public class BaseQuery extends BasePageQuery {
     @ApiModelProperty(value = "用户ID")
     private Integer userId;
 }

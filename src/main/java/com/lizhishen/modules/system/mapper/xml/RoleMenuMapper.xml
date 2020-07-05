@@ -2,28 +2,28 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.com.lizhishen.modules.system.mapper.RoleMenuMapper">
 
-	<!-- 通用查询映射结果 -->
-	<resultMap id="BaseResultMap" type="com.com.lizhishen.modules.system.entity.RoleMenu">
-		<id column="id" property="id" />
-		<result column="role_id" property="roleId" />
-		<result column="menu_id" property="menuId" />
-        <result column="gmt_create" property="gmtCreate" />
-        <result column="gmt_modified" property="gmtModified" />
-	</resultMap>
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.com.lizhishen.modules.system.entity.RoleMenu">
+        <id column="id" property="id"/>
+        <result column="role_id" property="roleId"/>
+        <result column="menu_id" property="menuId"/>
+        <result column="gmt_create" property="gmtCreate"/>
+        <result column="gmt_modified" property="gmtModified"/>
+    </resultMap>
 
     <!--    <resultMap id="ResultMap" type="com.zhengqing.modules.system.dto.output.RoleView" extends="BaseResultMap"></resultMap>-->
 
     <select id="selectRoleMenus" resultMap="BaseResultMap">
         SELECT
-             *
+        *
         FROM t_sys_role_menu
         WHERE
-             1 = 1
+        1 = 1
         <if test="filter.id!=null and filter.id!=''">
-            AND	id= #{filter.id}
+            AND id= #{filter.id}
         </if>
         <if test="filter.roleId!=null and filter.roleId!=''">
-            AND	role_id= #{filter.roleId}
+            AND role_id= #{filter.roleId}
         </if>
         ORDER BY id DESC
     </select>
@@ -38,13 +38,13 @@
 
     <select id="selectMenusByRoleId" resultType="com.com.lizhishen.modules.system.entity.Menu">
         SELECT
-            p.*
+        p.*
         FROM
-            t_sys_role_menu rp
+        t_sys_role_menu rp
         LEFT JOIN t_sys_menu p ON rp.menu_id = p.id
         WHERE 1=1
         <if test="roleId!=null">
-            AND	role_id= #{roleId}
+            AND role_id= #{roleId}
         </if>
     </select>
 

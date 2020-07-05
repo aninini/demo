@@ -6,7 +6,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.web.bind.annotation.RestController;
 
 /**
- *  <p> 基类 </p>
+ * <p> 基类 </p>
  *
  * @description:
  * @author: zhengqing
@@ -16,6 +16,6 @@ import org.springframework.web.bind.annotation.RestController;
 @Slf4j
 public class BaseController {
 
-    public Logger LOG = LoggerFactory.getLogger( getClass() );
+    public Logger LOG = LoggerFactory.getLogger(getClass());
 
 }

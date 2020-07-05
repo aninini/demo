@@ -10,13 +10,10 @@ import java.util.Date;
 /**
  * 系统管理 - 日志表查询参数
  *
- * @author: zhengqing
- * @description:
- * @date: 2019-09-18 10:51:57
  */
 @Data
 @ApiModel(description = "系统管理 - 日志表查询参数")
-public class LogQueryPara extends BasePageQuery{
+public class LogQueryPara extends BasePageQuery {
     @ApiModelProperty(value = "id")
     private Integer id;
     @ApiModelProperty(value = "访问人")

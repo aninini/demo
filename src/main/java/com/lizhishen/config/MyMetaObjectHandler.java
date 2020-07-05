@@ -11,11 +11,9 @@ import java.text.ParseException;
 import java.util.Date;
 
 /**
- *  <p> MyBatisPlus自定义字段自动填充处理类 - 实体类中使用 @TableField注解 </p>
+ * <p> MyBatisPlus自定义字段自动填充处理类 - 实体类中使用 @TableField注解 </p>
  *
  * @description: 注意前端传值时要为null
- * @author: zhengqing
- * @date: 2019/8/18 0018 1:46
  */
 @Component
 public class MyMetaObjectHandler extends MetaObjectHandler {
@@ -36,9 +34,9 @@ public class MyMetaObjectHandler extends MetaObjectHandler {
         // 日志输出 ================================================================================================
         Date gmtCreate = (Date) this.getFieldValByName("gmtCreate", metaObject);
         Date gmtModified = (Date) this.getFieldValByName("gmtModified", metaObject);
-        if ( gmtCreate != null && gmtModified != null ){
+        if (gmtCreate != null && gmtModified != null) {
             try {
-                LOG.info("MyBatisPlus自动填充处理 - gmtCreate:{} gmtModified:{}", DateTimeUtils.dateToDateTimeString( gmtCreate ), DateTimeUtils.dateToDateTimeString( gmtModified ) );
+                LOG.info("MyBatisPlus自动填充处理 - gmtCreate:{} gmtModified:{}", DateTimeUtils.dateToDateTimeString(gmtCreate), DateTimeUtils.dateToDateTimeString(gmtModified));
             } catch (ParseException e) {
                 e.printStackTrace();
             }
@@ -58,9 +56,9 @@ public class MyMetaObjectHandler extends MetaObjectHandler {
 
         // 日志输出 ================================================================================================
         Date gmtModified = (Date) this.getFieldValByName("gmtModified", metaObject);
-        if ( gmtModified != null ){
+        if (gmtModified != null) {
             try {
-                LOG.info("MyBatisPlus自动填充处理 - gmtModified:{}", DateTimeUtils.dateToDateTimeString( gmtModified ));
+                LOG.info("MyBatisPlus自动填充处理 - gmtModified:{}", DateTimeUtils.dateToDateTimeString(gmtModified));
             } catch (ParseException e) {
                 e.printStackTrace();
             }

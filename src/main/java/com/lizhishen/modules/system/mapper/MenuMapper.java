@@ -11,8 +11,6 @@ import java.util.List;
 /**
  * <p> 系统管理-菜单表  Mapper 接口 </p>
  *
- * @author : zhengqing
- * @date : 2019-08-19
  */
 public interface MenuMapper extends BaseMapper<Menu> {
 

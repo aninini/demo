@@ -9,9 +9,6 @@ import lombok.Data;
 /**
  *  <p> 系统管理-角色表 输出内容 </p>
  *
- * @author：  zhengqing <br/>
- * @date：  2019/8/20$ 16:59$ <br/>
- * @version：  <br/>
  */
 @Data
 @ApiModel(description = "系统管理 - 角色表 输出内容")

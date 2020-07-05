@@ -32,8 +32,6 @@ import java.util.Set;
 /**
  * <p> 系统管理-用户基础信息表 服务实现类 </p>
  *
- * @author: zhengqing
- * @date: 2019-08-19
  */
 @Service
 @Transactional
@@ -60,20 +58,20 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements IU
     public UserInfoVO getCurrentUserInfo(String token) {
         User user = userMapper.getUserInfoByToken(token);
         UserInfoVO userInfoVO = new UserInfoVO();
-        BeanUtil.copyProperties( user,userInfoVO);
+        BeanUtil.copyProperties(user, userInfoVO);
 
         Set<String> roles = new HashSet();
         Set<MenuVO> menuVOS = new HashSet();
         Set<ButtonVO> buttonVOS = new HashSet();
 
         //查询某个用户的角色
-        List<Role> roleList = userRoleMapper.selectRoleByUserId( user.getId() );
-        if(roleList != null && !roleList.isEmpty() ){
-            roles.add( roleList.get(0).getCode() );
+        List<Role> roleList = userRoleMapper.selectRoleByUserId(user.getId());
+        if (roleList != null && !roleList.isEmpty()) {
+            roles.add(roleList.get(0).getCode());
 
             //查询某个角色的菜单
-            List<Menu> menuList = roleMenuMapper.selectMenusByRoleId( roleList.get(0).getId() );
-            if(menuList != null && !menuList.isEmpty() ){
+            List<Menu> menuList = roleMenuMapper.selectMenusByRoleId(roleList.get(0).getId());
+            if (menuList != null && !menuList.isEmpty()) {
                 menuList.stream().filter(Objects::nonNull).forEach(menu -> {
                     if ("button".equals(menu.getType().toLowerCase())) {
                         //如果权限是按钮，就添加到按钮里面
@@ -90,21 +88,21 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements IU
                 });
             }
         }
-        userInfoVO.getRoles().addAll( roles );
-        userInfoVO.getButtons().addAll( buttonVOS );
-        userInfoVO.getMenus().addAll( TreeBuilder.buildTree(menuVOS) );
+        userInfoVO.getRoles().addAll(roles);
+        userInfoVO.getButtons().addAll(buttonVOS);
+        userInfoVO.getMenus().addAll(TreeBuilder.buildTree(menuVOS));
         return userInfoVO;
     }
 
     @Override
     public Integer save(User para) {
-        if (para.getId()!=null) {
+        if (para.getId() != null) {
             User user = userMapper.selectById(para.getId());
-            para.setPassword( PasswordUtils.encodePassword(para.getPwd(), user.getSalt()));
+            para.setPassword(PasswordUtils.encodePassword(para.getPwd(), user.getSalt()));
             userMapper.updateById(para);
         } else {
-            para.setSalt( Constants.SALT );
-            para.setPassword( PasswordUtils.encodePassword(para.getPwd(), Constants.SALT));
+            para.setSalt(Constants.SALT);
+            para.setPassword(PasswordUtils.encodePassword(para.getPwd(), Constants.SALT));
             userMapper.insert(para);
         }
         return para.getId();
@@ -112,33 +110,33 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements IU
 
     @Override
     public Integer updatePersonalInfo(User para) {
-        if (para.getId()==null){
+        if (para.getId() == null) {
             throw new MyException("用户信息异常丢失，请重新登录尝试修改个人信息！");
         }
-        if ( StringUtils.isBlank( para.getUsername() ) ){
+        if (StringUtils.isBlank(para.getUsername())) {
             throw new MyException("账号不能为空！");
         }
-        if ( StringUtils.isBlank( para.getNickName() ) ){
+        if (StringUtils.isBlank(para.getNickName())) {
             throw new MyException("昵称不能为空！");
         }
-        User user = userMapper.selectById( para.getId() );
-        if ( StringUtils.isNotBlank( para.getPwd() ) ){
-            if (para.getPwd().trim().length() < 6){
+        User user = userMapper.selectById(para.getId());
+        if (StringUtils.isNotBlank(para.getPwd())) {
+            if (para.getPwd().trim().length() < 6) {
                 throw new MyException("请设置至少6位数密码！");
             }
             // 更新密码
-            para.setPassword( PasswordUtils.encodePassword(para.getPwd(), user.getSalt()));
+            para.setPassword(PasswordUtils.encodePassword(para.getPwd(), user.getSalt()));
         } else {
             para.setPwd(null);
         }
 
         // 验证账号是否重复
         UserQueryPara userQueryPara = new UserQueryPara();
-        userQueryPara.setAccount( para.getUsername() );
+        userQueryPara.setAccount(para.getUsername());
         List<User> userList = userMapper.selectUsers(userQueryPara);
-        if ( !CollectionUtils.isEmpty( userList ) ){
-            if ( !para.getUsername().equals( user.getUsername() ) || userList.size() > 1 ){
-                throw new MyException( "账号重复，请重新输入！" );
+        if (!CollectionUtils.isEmpty(userList)) {
+            if (!para.getUsername().equals(user.getUsername()) || userList.size() > 1) {
+                throw new MyException("账号重复，请重新输入！");
             }
         }
         userMapper.updateById(para);

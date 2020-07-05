@@ -21,10 +21,6 @@ import java.util.List;
 /**
  * <p> 系统管理-角色表  接口 </p>
  *
- * @author: zhengqing
- * @description:
- * @date: 2019-08-20
- *
  */
 @RestController
 @RequestMapping("/api/system/role")
@@ -37,7 +33,7 @@ public class SysRoleController extends BaseController {
     @PostMapping(value = "/listPage", produces = "application/json;charset=utf-8")
     @ApiOperation(value = "获取系统管理-角色表 列表分页", httpMethod = "POST", response = ApiResult.class)
     public ApiResult listPage(@RequestBody RoleQueryPara filter) {
-        Page<Role> page = new Page<>(filter.getPage(),filter.getLimit());
+        Page<Role> page = new Page<>(filter.getPage(), filter.getLimit());
         roleService.listPage(page, filter);
         return ApiResult.ok("获取系统管理-角色表 列表分页成功", page);
     }
@@ -46,7 +42,7 @@ public class SysRoleController extends BaseController {
     @ApiOperation(value = "获取系统管理-角色表 列表", httpMethod = "POST", response = ApiResult.class)
     public ApiResult list(@RequestBody RoleQueryPara filter) {
         List<Role> result = roleService.list(filter);
-        return ApiResult.ok("获取系统管理-角色表 列表成功",result);
+        return ApiResult.ok("获取系统管理-角色表 列表成功", result);
     }
 
     @PostMapping(value = "/saveOrUpdate", produces = "application/json;charset=utf-8")

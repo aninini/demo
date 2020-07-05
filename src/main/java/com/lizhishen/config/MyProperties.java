@@ -6,11 +6,8 @@ import org.springframework.boot.context.properties.ConfigurationProperties;
 import java.util.List;
 
 /**
- *  <p> MyProperties </p>
+ * <p> MyProperties </p>
  *
- * @description :
- * @author : zhengqing
- * @date : 2019/8/19 9:07
  */
 @Data
 @ConfigurationProperties(prefix = "com.lizhishen", ignoreUnknownFields = false)

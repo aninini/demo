@@ -16,8 +16,6 @@ import java.util.List;
 /**
  * <p> 系统管理 - 用户角色关联表  服务实现类 </p>
  *
- * @author: zhengqing
- * @date: 2019-08-20
  */
 @Service
 @Transactional
@@ -38,7 +36,7 @@ public class UserRoleServiceImpl extends ServiceImpl<UserRoleMapper, UserRole> i
 
     @Override
     public Integer save(UserRole para) {
-        if (para.getId()!=null) {
+        if (para.getId() != null) {
             userRoleMapper.updateById(para);
         } else {
             userRoleMapper.insert(para);
@@ -50,15 +48,15 @@ public class UserRoleServiceImpl extends ServiceImpl<UserRoleMapper, UserRole> i
     public void saveUserRole(UserRoleQueryPara para) {
         Integer roleId = para.getRoleId();
         String userIds = para.getUserIds();
-        userRoleMapper.deleteByRoleId( roleId );
-        if( StringUtils.isNotBlank( userIds ) ){
-            String[] userIdArrays = userIds.split( "," );
-            if( userIdArrays.length > 0 ){
+        userRoleMapper.deleteByRoleId(roleId);
+        if (StringUtils.isNotBlank(userIds)) {
+            String[] userIdArrays = userIds.split(",");
+            if (userIdArrays.length > 0) {
                 for (String userId : userIdArrays) {
                     UserRole userRole = new UserRole();
-                    userRole.setRoleId( roleId );
-                    userRole.setUserId( Integer.parseInt( userId ) );
-                    userRoleMapper.insert( userRole );
+                    userRole.setRoleId(roleId);
+                    userRole.setUserId(Integer.parseInt(userId));
+                    userRoleMapper.insert(userRole);
                 }
             }
         }

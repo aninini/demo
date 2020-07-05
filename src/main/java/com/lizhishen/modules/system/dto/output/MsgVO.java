@@ -6,10 +6,6 @@ import lombok.Data;
 
 /**
  *  <p>  websocket消息内容 </p>
- *
- * @author：  zhengqing <br/>
- * @date：  2019/12/4$ 10:27$ <br/>
- * @version：  <br/>
  */
 @Data
 @ApiModel(description = "websocket消息内容")

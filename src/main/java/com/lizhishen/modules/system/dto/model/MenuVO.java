@@ -7,10 +7,10 @@ import java.io.Serializable;
 import java.util.List;
 
 /**
- *  <p> 权限-菜单 </p>
+ * <p> 权限-菜单 </p>
  *
- * @description :
  * @author : zhengqing
+ * @description :
  * @date : 2019/8/19 18:57
  */
 @Data

@@ -16,17 +16,14 @@ import java.util.Collection;
 /**
  * <p> 对访问url进行权限认证处理 </p>
  *
- * @author : zhengqing
- * @description :
- * @date : 2019/10/15 14:21
  */
 @Component
 public class UrlAccessDecisionManager implements AccessDecisionManager {
 
     /**
      * @param authentication: 当前登录用户的角色信息
-     * @param object: 请求url信息
-     * @param collection: `UrlFilterInvocationSecurityMetadataSource`中的getAttributes方法传来的，表示当前请求需要的角色（可能有多个）
+     * @param object:         请求url信息
+     * @param collection:     `UrlFilterInvocationSecurityMetadataSource`中的getAttributes方法传来的，表示当前请求需要的角色（可能有多个）
      * @return: void
      */
     @Override

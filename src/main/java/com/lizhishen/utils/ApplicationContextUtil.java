@@ -9,11 +9,9 @@ import java.util.Arrays;
 import java.util.List;
 
 /**
- *  <p> 全局上下文工具类配置 </p>
+ * <p> 全局上下文工具类配置 </p>
  *
  * @description : 解决静态方法中mapper的调用
- * @author : zhengqing
- * @date : 2019/10/17 14:44
  */
 @Slf4j
 public class ApplicationContextUtil {
@@ -31,6 +29,7 @@ public class ApplicationContextUtil {
 
     /**
      * 根据Class类型在IOC容器中获取对象
+     *
      * @param clazz Class类型
      * @return 对象
      */
@@ -48,7 +47,7 @@ public class ApplicationContextUtil {
 
         T t = null;
         for (String beanName : beanNames) {
-            t = (T)applicationContext.getBean(beanName);
+            t = (T) applicationContext.getBean(beanName);
             list.add(t);
         }
 

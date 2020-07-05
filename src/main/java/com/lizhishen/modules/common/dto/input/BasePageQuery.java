@@ -4,7 +4,7 @@ import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 
 /**
- *  <p> 基础分页检索参数 </p>
+ * <p> 基础分页检索参数 </p>
  *
  * @description:
  * @author: zhengqing

@@ -4,21 +4,18 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- *  <p> 全局常用变量 </p>
+ * <p> 全局常用变量 </p>
  *
- * @description :
- * @author : zhengqing
- * @date : 2019/10/12 14:47
  */
 public class Constants {
 
     /**
      * 接口url
      */
-    public static Map<String,String> URL_MAPPING_MAP = new HashMap<>();
+    public static Map<String, String> URL_MAPPING_MAP = new HashMap<>();
 
     /**
-     *  获取项目根目录
+     * 获取项目根目录
      */
     public static String PROJECT_ROOT_DIRECTORY = System.getProperty("user.dir");
 

@@ -7,11 +7,8 @@ import org.springframework.security.crypto.codec.Hex;
 import java.security.MessageDigest;
 
 /**
- *  <p> 加密工具 </p>
+ * <p> 加密工具 </p>
  *
- * @description:
- * @author: zhengqing
- * @date: 2019/10/13 0013 15:25
  */
 @Slf4j
 public class PasswordUtils {
@@ -19,7 +16,7 @@ public class PasswordUtils {
     /**
      * 校验密码是否一致
      *
-     * @param password: 前端传过来的密码
+     * @param password:                    前端传过来的密码
      * @param hashedPassword：数据库中储存加密过后的密码
      * @param salt：盐值
      * @return
