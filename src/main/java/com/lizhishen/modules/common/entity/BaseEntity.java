@@ -12,9 +12,6 @@ import java.util.Date;
 /**
  * <p> 修改时间 </p>
  *
- * @description:
- * @author: zhengqing
- * @date: 2019/8/18 0018 1:30
  */
 @Getter
 @Setter

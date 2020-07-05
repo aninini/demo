@@ -26,9 +26,6 @@ import java.util.Date;
 /**
  * <p> 系统日志处理 </p>
  *
- * @author : zhengqing
- * @description :
- * @date : 2019/9/18 15:25
  */
 @Aspect
 @Configuration

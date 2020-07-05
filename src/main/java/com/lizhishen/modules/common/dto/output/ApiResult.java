@@ -7,9 +7,6 @@ import io.swagger.annotations.ApiModelProperty;
 /**
  * <p> API返回参数 </p>
  *
- * @author : zhengqing
- * @description :
- * @date : 2019/7/20 11:09
  */
 @ApiModel(value = "API返回参数")
 public class ApiResult {

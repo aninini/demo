@@ -10,7 +10,7 @@ import java.util.List;
  *
  */
 @Data
-@ConfigurationProperties(prefix = "com.lizhishen", ignoreUnknownFields = false)
+@ConfigurationProperties(prefix = "lizhishen", ignoreUnknownFields = false)
 public class MyProperties {
 
     /**

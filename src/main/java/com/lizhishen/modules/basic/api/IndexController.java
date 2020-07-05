@@ -10,9 +10,6 @@ import org.springframework.web.bind.annotation.RestController;
 /**
  * <p> 首页 </p>
  *
- * @author : zhengqing
- * @description :
- * @date : 2019/8/19 13:49
  */
 @RestController
 @Api(description = "首页-接口")

@@ -8,9 +8,6 @@ import org.springframework.web.bind.annotation.RestController;
 /**
  * <p> 基类 </p>
  *
- * @description:
- * @author: zhengqing
- * @date: 2019/8/17 0017 19:53
  */
 @RestController
 @Slf4j

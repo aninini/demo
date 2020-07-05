@@ -13,9 +13,6 @@ import java.util.List;
 /**
  *  <p> 数据库字段内容重复判断处理工具类 </p>
  *
- * @author：  zhengqing <br/>
- * @date：  2019/9/10$ 9:28$ <br/>
- * @version：  <br/>
  */
 public class FieldRepeatValidatorUtils {
 
